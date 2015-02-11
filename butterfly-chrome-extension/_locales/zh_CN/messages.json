@@ -1,0 +1,10 @@
+﻿{
+	"extName": {
+		"message": "蝴蝶飞",
+		"description": "扩展名称"
+	},
+	"description": {
+	    "message": "缩短网址并分享到你的社交网络。包含 goo.gl, is.gd, aa.cx 等短网址服务，包含新浪微博，开心，豆瓣，人人，Twitter, facebook, google reader 等 SNS 服务。",
+	    "description": "扩展描述"
+	}
+}

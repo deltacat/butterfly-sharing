@@ -1,0 +1,64 @@
+﻿{
+	"parameters" : 
+	{
+		"auto_copy" : true,
+		"show_icon" : true,
+		"include_title": true,
+		"shorten_service" : "is.gd"
+	},
+	
+	"services" : 
+	{
+		"douban" : true,
+		"sina" : true,
+		"kaixin" : true,
+		"gmail" : false,
+		"greader" : true,
+		"renren" : false,
+		"mail" : false,
+		"baidu" : false,
+		"blogger" : false,
+		"facebook" : false,
+		"delicious" : false,
+		"digg" : false,
+		"myspace" : false,
+		"twitter" : false
+	},
+	
+	"servicesW" :
+	{
+		"blogger" : true,
+		"facebook" : true,
+		"delicious" : true,
+		"digg" : true,
+		"myspace" : true,
+		"twitter" : true
+	},
+	
+	"serviceNames" : 
+	{
+		"douban" : "豆瓣网",
+		"sina" : "新浪微博",
+		"kaixin" : "开心网",
+		"gmail" : "Gmail",
+		"greader" : "Google Reader",
+		"renren" : "人人网",
+		"mail" : "邮件",
+		"baidu" : "百度搜藏",
+		"blogger" : "Blogger",
+		"facebook" : "Facebook",
+		"delicious" : "Delicious",
+		"digg" : "Digg",
+		"myspace" : "MySpace",
+		"twitter" : "Twitter"
+	},
+	
+	"twitter" :
+	{
+		"enabled" : false,
+		"API" : "https://twitter.com/",
+		"username" : "",
+		"password" : "",
+		"OAuth" : ""
+	}
+}

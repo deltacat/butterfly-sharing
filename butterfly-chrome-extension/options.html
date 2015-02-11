@@ -1,0 +1,100 @@
+﻿﻿<html>
+	<head> 
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+		<title>设置</title>
+		<!-- {{{ jQuery --> 
+		<link rel="Stylesheet" type="text/css" href="jquery/css/gray/jquery-ui-1.8.custom.css">	
+		<script type="text/javascript" src="jquery/js/jquery-1.4.2.min.js"></script>
+		<script type="text/javascript" src="jquery/js/jquery-ui-1.8.custom.min.js"></script>
+		<!-- }}} jQuery --> 
+		
+		<link rel="stylesheet" type="text/css" href="stylesheets/options.css">
+		<script type="text/javascript" src="scripts/consts.js"></script> 
+		<script type="text/javascript" src="scripts/preferences.js"></script> 
+		<script type="text/javascript" src="scripts/options.js"></script>
+	</head> 
+
+	<body onload="onLoadOptionPage();"> 
+		<div class="div-main"> 
+			<div class="div-title"> 
+				设置
+			</div> 
+			<div id="mainTabs" fit="true">
+				<ul>
+					<li><a href="#tabs-1" class="tabs-title">基本选项</a></li>
+					<li><a href="#tabs-2" class="tabs-title">分享到</a></li>
+					<li><a href="#tabs-3" class="tabs-title">高级分享</a></li>
+					<li><a href="#tabs-changelog" class="tabs-title">版本历史</a></li>
+				</ul>
+				<div id="tabs-1" class="tabs-page">
+					<table cellspacing="3" cellpadding="2"> 
+						<tr>
+							<td class="align-right">包含标题 </td>
+							<td class="align-left"><input type="checkbox" id="chkIncludeTitle"/></td>
+						</tr>
+						<tr>
+							<td class="align-right">自动拷贝至剪贴板 </td>
+							<td class="align-left"><input type="checkbox" id="chkAutoCopy"/></td>
+						</tr>
+						<tr>
+							<td class="align-right">显示SNS图标 </td>
+							<td class="align-left"><input type="checkbox" id="chkShowIcon"/></td>
+						</tr>
+						<tr>
+							<td class="align-right">短网址服务 </td>
+							<td class="align-left">  
+								<select id="shortenService" name="shorten_service" class="easyui-combobox"  style="width:100px;">
+									<option>goo.gl</option>
+									<option>is.gd</option>
+									<option>aa.cx</option>
+								</select>
+							</td>
+						</tr>
+					</table> 
+				</div>
+				<div id="tabs-2" title="分享到" class="tabs-page">
+					<table>
+						<tr>
+							<td class="align-center">内</td><td class="align-center">外</td>
+						</tr>
+						<tr>
+							<td width="50%">		
+								<table cellspacing="0" cellpadding="0" id="services"></table>
+							</td>
+							<td width="50%">
+								<table cellspacing="0" cellpadding="0" id="servicesW"></table>
+							</td>
+						</tr>
+					</table>				
+				</div>
+				<div id="tabs-3" title="高级分享" class="tabs-page">
+					<table cellspacing="3" cellpadding="2"> 
+						<tr>
+							<td class="align-right">Twitter</td>
+							<td class="align-left"><input type="checkbox" id="chkTwitter"/></td>
+						</tr>
+						<tr>
+							<td class="align-right" width="40%">API </td>
+							<td class="align-left"><input type="text" id="twtApi"/></td>
+						</tr>
+						<tr>
+							<td class="align-right" width="40%">用户名 </td>
+							<td class="align-left"><input type="text" id="twtUser"/></td>
+						</tr>
+						<tr>
+							<td class="align-right">密码 </td>
+							<td class="align-left"><input type="password" id="twtPass"/></td>
+						</tr>
+					</table> 
+				</div>
+				<div id="tabs-changelog" title="版本历史" class="tabs-page">
+				</div>
+			</div>
+			
+			<div id="divOptionsBottom" class="div-bottom">
+				<a href="#" onclick="loadDefault();">载入默认</a>
+				<a href="#" id="btnSave" onclick="saveAll();">保存</a>
+			</div>			
+		</div> 
+	</body> 
+</html>

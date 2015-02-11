@@ -1,0 +1,88 @@
+﻿{
+	"changelog_cn" : 
+	[
+		{
+			"version" : "0.1.0",
+			"changes" : [ 
+			    			"出于学习目的制作，参考 <a href='https://chrome.google.com/extensions/detail/iblijlcdoidgdpfknkckljiocdbnlagk' target='_blank'>goo.gl URL Shortener</a>，<a href='https://chrome.google.com/extensions/detail/kbjondeaahhlhkfilncdmkbffglbncla?hl=en'>奇文共赏</a>" 
+			    		]
+		},
+		{
+			"version" : "0.1.4",
+			"changes" : [ 
+			    			"支持自选短网址服务。目前包括 is.gd, goo.gl。 默认为 goo.gl" 
+			    		]
+		},
+		{
+			"version" : "0.1.5",
+			"changes" : [ 
+			    			"改名，暂定 Butterfly", 
+			    			"多语言支持（英语，中文）。只是功能性支持，尚未翻译。"
+			    		]
+		},
+		{
+			"version" : "0.1.6",
+			"changes" : [ 
+			    			"用户设置优化", 
+			    			"增加短网址服务： aa.cx" 
+			    		]
+		},
+		{
+			"version" : "0.1.7",
+			"changes" : [ 
+			    			"修改显示效果", 
+			    			"输出内容可包含标题（选项中设定）" 
+			    		]
+		},
+		{
+			"version" : "0.1.10",
+			"changes" : [ 
+			    			"显示效果优化", 
+			    			"用户设置优化" 
+			    		]
+		},
+		{
+			"version" : "0.2.0",
+			"changes" : [ 
+			    			"显示效果优化", 
+			    			"用户设置优化，支持载入默认设置",
+			    			"追加 blogger, twitter 等 SNS",
+			    			"修正bug",
+			    			"默认短网址设定为 is.gd"
+			    		]
+		},
+		{
+			"version" : "0.3.1",
+			"changes" : [ 
+			    			"使用 jQuery EasyUI 改进界面", 
+			    			"用户设置优化，支持载入默认设置",
+			    			"追加 blogger, twitter 等 SNS",
+			    			"修正bug",
+			    			"默认短网址设定为 is.gd"
+			    		]
+		},
+		{
+			"version" : "0.3.5",
+			"changes" : [ 
+			    			"换用定制性更好的 jQuery UI", 
+			    			"修正BUG", 
+			    			"改进 changelog 存储方式",
+			    			"修正百度搜藏标题网址颠倒的bug"
+			    		]
+		},
+		{
+			"version" : "0.3.8",
+			"changes" : [ 
+			    			"调整CSS，纠正部分语言和分辨率下出现滚动条的问题。"
+			    		]
+		},		
+		{
+			"version" : "0.3.10",
+			"changes" : [ 
+			    			"调整显示效果。",
+			    			"优化参数传递，减小弹出页体积。",
+			    			"支持编辑缩短后的内容。"
+			    		]
+		}		
+	]
+}

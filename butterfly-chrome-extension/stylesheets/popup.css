@@ -1,0 +1,76 @@
+﻿body, textarea 
+{
+	margin: 3px;
+	padding: 0;
+	font-family: Cambria, Microsoft YaHei, 微软雅黑;
+	font-size: 14px; 
+	color: #777777;
+}
+
+.txtContent
+{
+	resize:none;
+	overflow-y:visible;	
+	padding: 1px 3px;
+	width: 100%;
+	margin: 0px;
+}
+
+.div-loading
+{
+	width: 160px;
+	margin-left: auto;
+    margin-right: auto;
+}
+
+.div-response
+{
+	width: 260px;
+	margin-left: auto;
+    margin-right: auto;
+}
+
+.div-text
+{
+	width: 260px;
+	margin-left: auto;
+    margin-right: auto;
+}
+
+.div-share
+{
+	margin: 2px 0px 2px 0px;
+	vertical-align: middle;
+}
+
+.div-status
+{
+	pading: 5px, 3px;
+	margin-left: auto;
+    margin-right: auto;
+}
+
+.button-share
+{
+	font-size: 16px;
+	padding: 2px;
+	margin: 0px;
+}
+
+.button-share-plain
+{
+	border: 1px solid transparent;
+}
+
+.button-share-advance
+{
+	font-size: 14px;
+	padding: 1px 4px 1px 4px;
+	margin: 0px;
+}
+
+.icon-share
+{
+	width: 16px;
+	height: 16px;
+}

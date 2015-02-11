@@ -1,0 +1,84 @@
+﻿body, td, input, div
+{
+	font-family: Cambria, Arial, Microsoft YaHei, 微软雅黑;
+	font-weight: normal;
+	color: #777777;
+}
+
+body, td 
+{
+	margin: 3px;
+	padding: 0;
+	font-size: 14px;
+}
+
+td
+{
+	border-bottom-color: #CCC;
+	border-bottom-style: none;
+	border-bottom-width: 1px;
+	margin: 0px 0px 0px 0px;
+	padding: 4px 0px 4px 0px;
+	vertical-align: top;
+}
+
+ul 
+{
+	margin-top: 0;
+}
+
+.bold
+{
+	font-weight: bold;
+}
+
+.tabs-title
+{
+	font-size: 12px;
+}
+
+.tabs-page
+{
+	overflow-Y:auto; 
+	height:300px;
+}
+
+.div-main
+{
+	width: 420px;
+	margin-left: auto;
+    margin-right: auto;
+}
+
+.div-title
+{
+	height: 30px; 
+	margin: 5px 18px;
+	font-size: 24px; 
+	font-weight: bold;
+	text-align: center;
+}
+
+.div-bottom
+{
+	height: 30px; 
+	padding: 5px;
+	margin: 5px 18px;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.align-right
+{
+	text-align: right;
+}
+
+.align-left
+{
+	text-align: left;
+}
+
+.align-center
+{
+	text-align: center;
+}
