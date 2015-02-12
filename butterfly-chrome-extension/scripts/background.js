@@ -1,14 +1,5 @@
 ﻿var g_preferences = new Preferences();
 
-function copyToClipboard(text)
-{
-	var input = document.getElementById('url');
-	input.value = text;					
-	input.focus();
-	input.select();
-	document.execCommand('Copy');
-}
- 
 function shortenUrl(url)
 {
 	var preferences = g_preferences.parameters;
@@ -86,7 +77,7 @@ function shortenUrlByAacx(url)
 	return response;	
 }
  
-chrome.extension.onRequest.addListener(function(request, sender, func) 
+chrome.extension.onMessage.addListener(function(request, sender, func) 
 {			
 	switch(request.type)
 	{
@@ -96,7 +87,8 @@ chrome.extension.onRequest.addListener(function(request, sender, func)
 		break;
 		
 		case REQUEST_COPY:
-			copyToClipboard(request.content);
+			// disable clipboard functions.
+			// copyToClipboard(request.content);
 		break;
 		
 		case REQUEST_PREFERENCE_RELOAD:

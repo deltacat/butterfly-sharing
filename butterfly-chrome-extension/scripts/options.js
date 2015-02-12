@@ -48,9 +48,9 @@ function saveAll()
 		
 	g_preferences.parameters = 
 		{
-			auto_copy : $("#chkAutoCopy").attr("checked"),
-			show_icon : $("#chkShowIcon").attr("checked"),
-			include_title : $("#chkIncludeTitle").attr("checked"),
+			auto_copy : $("#chkAutoCopy").is(":checked"),
+			show_icon : $("#chkShowIcon").is(":checked"),
+			include_title : $("#chkIncludeTitle").is(":checked"),
 			shorten_service : getSelectedText('#shortenService')
 		}
 		
@@ -69,8 +69,7 @@ function saveAll()
 		}
 
 	g_preferences.save();	
-	
-	chrome.extension.sendRequest({type: REQUEST_PREFERENCE_RELOAD});
+	chrome.extension.sendMessage({type: REQUEST_PREFERENCE_RELOAD});
 	
 }
 
@@ -124,9 +123,9 @@ function loadPage()
 	var preferences = g_preferences.parameters;
 
 	// basic options
-	$("#chkIncludeTitle").attr("checked", preferences.include_title);
-	$("#chkShowIcon").attr("checked", preferences.show_icon);
-	$("#chkAutoCopy").attr("checked", preferences.auto_copy);
+	$("#chkIncludeTitle").prop("checked", preferences.include_title);
+	$("#chkShowIcon").prop("checked", preferences.show_icon);
+	$("#chkAutoCopy").prop("checked", preferences.auto_copy);
 	setSelectedText("#shortenService", preferences.shorten_service);
 	
 	// Create services.
@@ -156,8 +155,7 @@ function loadPage()
 
 }
 
-function onLoadOptionPage()
-{
+$(document).ready(function() {
 	if(g_preferences == undefined || g_preferences == null)
 		g_preferences = new Preferences();
 
@@ -165,5 +163,14 @@ function onLoadOptionPage()
 	$("#divOptionsBottom a").button();
 	$("#divOptionsBottom #btnSave").button( "option", "icons", {primary:'ui-icon-disk'} );
 
-	loadPage();	
-}
+	loadPage();		
+	
+	$("#btnSave").click(function() {
+		saveAll();
+	});
+	
+	$("#btnReload").click(function() {
+		loadDefault();
+	})
+});
+

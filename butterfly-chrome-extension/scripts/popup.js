@@ -19,8 +19,18 @@ function addServices()
 			{
 				$divShare.append(createServiceIcon(service));
 				hasButton = true;
+				console.log("adding " + service);
+				
+				// binding event for each service icon
+				var btnid = "#btn" + service;
+				console.log("binding " + btnid);
+				$(btnid).click({service: service}, function(e){
+					console.log(e.data);
+					openShareWindow(e.data.service);
+				});
 			}
 		}
+		
  
  		// create copy button
 		if(!g_preferences.parameters.auto_copy)
@@ -78,7 +88,9 @@ function openShareWindow(service)
 {
 	if(service == undefined)
 		return;
-		
+	
+	console.log("open share window for " + service);
+	
 	var url = buildShareUrl(service, g_data);
 	window.open(url,'butterfly_'+service,'toolbar=0,resizable=1,scrollbars=yes,status=1,width=600,height=400');
 }
@@ -142,8 +154,8 @@ function createServiceIcon(service)
 {
 	var iconHtml = "";
 		
-	iconHtml += '<a class="ui-button button-share button-share-plain"';
-	iconHtml += ' href="javascript:openShareWindow('+ "'" + service + "'" + ');"';		
+	iconHtml += '<a class="ui-button button-share button-share-plain" ';
+	iconHtml += 'id="btn'+ service + '" ';		
 		
 	if(g_preferences.parameters.show_icon)
 		iconHtml += ' title="'+g_preferences.serviceNames[service]+'"><img class="icon-share" src="icons/' + service + '.png">';
@@ -155,14 +167,6 @@ function createServiceIcon(service)
 	return iconHtml;
 }
  
-function copyToClipboard(content) 
-{
-	chrome.extension.sendRequest({type: REQUEST_COPY, content: content});
-	
-	if(!g_preferences.parameters.auto_copy)
-		window.close();
-}
-
 function initData(tab)
 {
 	g_data = 
@@ -185,8 +189,7 @@ function init()
 	chrome.tabs.getSelected(null, function(tab) 
 	{
 		initData(tab);
-		chrome.extension.sendRequest({type: REQUEST_SHORTEN, url: g_data.url}, function(response)
-		//chrome.extension.sendRequest({type: REQUEST_SHORTEN, url: "http://www.google.com"}, function(response)
+		chrome.extension.sendMessage({type: REQUEST_SHORTEN, url: g_data.url}, function(response)
 		{				
 			if(response.status == "error")
 			{
@@ -204,9 +207,6 @@ function init()
 				
 				$('#txtContent').append(g_data.txtContent);
 				
-				if(g_preferences.parameters.auto_copy)
-					copyToClipboard(g_data.txtContent);
-
 				// Adding share buttons
 				var hasButton = addServices();
 				if(hasButton)
@@ -232,9 +232,4 @@ function init()
 	});
 }
 
-function onTextChange()
-{
-	g_data.txtContent = $('#txtContent').attr("value");
-	if(g_preferences.parameters.auto_copy)
-		copyToClipboard(g_data.txtContent);
-}	
+$(document).ready(function () {init();});
