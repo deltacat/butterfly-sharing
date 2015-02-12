@@ -15,13 +15,14 @@
     "persistent": false
   },
   "browser_action": {
-	"default_icon": "icons/butterfly_32.png",
+	"default_icon": "icons/butterfly-48.png",
     "default_title": "__MSG_extName__",
 	"default_popup": "popup.html"
   },
   "icons": { 
-	"48": "icons/butterfly_48.png",
-    "128": "icons/butterfly_128.png" 
+	"32": "icons/butterfly-32.png",
+	"48": "icons/butterfly-48.png",
+    "128": "icons/butterfly-128.png" 
 	},
   "options_page": "options.html",
   "permissions": [
