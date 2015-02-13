@@ -206,6 +206,7 @@ function init()
 					g_data.txtContent = g_data.shortenedUrl;
 				
 				$('#txtContent').append(g_data.txtContent);
+				$('#qrcode').qrcode({width: 128, height: 128, text: g_data.shortenedUrl});
 				
 				// Adding share buttons
 				var hasButton = addServices();

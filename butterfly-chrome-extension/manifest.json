@@ -5,10 +5,8 @@
   "description": "__MSG_description__",
   "background": {
     "scripts": [
-    			"scripts/goo.gl.js", 
 				"scripts/consts.js", 
 				"scripts/preferences.js", 
-				"scripts/background.js",
 				"scripts/background.js",
 				"scripts/services.js"
 				],

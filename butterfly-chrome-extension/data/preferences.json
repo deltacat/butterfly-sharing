@@ -1,7 +1,8 @@
 ﻿{
 	"parameters" : 
 	{
-		"auto_copy" : true,
+		"auto_copy" : false,
+		"show_qrcode" : true,
 		"show_icon" : true,
 		"include_title": true,
 		"shorten_service" : "is.gd"
@@ -40,7 +41,6 @@
 		"sina" : "新浪微博",
 		"kaixin" : "开心网",
 		"gmail" : "Gmail",
-		"greader" : "Google Reader",
 		"renren" : "人人网",
 		"mail" : "邮件",
 		"baidu" : "百度搜藏",

@@ -28,17 +28,18 @@ function shortenUrlByGoogl(url)
 	var response;
 	
 	var	xmlhttp = new XMLHttpRequest();
-	xmlhttp.open("POST", "http://goo.gl/api/url?user=toolbar@google.com&url=" + encodeURIComponent(url) + "&auth_token=" + getAuthToken(url), false);
+	xmlhttp.open("POST", "https://www.googleapis.com/urlshortener/v1/url", false);
 	xmlhttp.onload = function()
 	{
-		var object = JSON.parse(xmlhttp.responseText);
-		
-		if(object["short_url"] == undefined)
-			response = {status: "error", message: object["error_message"]};
+		if(200 == xmlhttp.status){
+			var data = JSON.parse(xmlhttp.responseText);
+			response = {status: "success", message: data.id};
+		}
 		else	
-			response = {status: "success", message: object["short_url"]};
+			response = {status: "error", message: data.error_message};
 	}
-	xmlhttp.send(null);
+	xmlhttp.setRequestHeader("Content-Type","application/json"); 
+	xmlhttp.send('{"longUrl": "' + url + '"}');
  
 	return response;
 }
