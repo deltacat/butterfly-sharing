@@ -31,12 +31,11 @@ function shortenUrlByGoogl(url)
 	xmlhttp.open("POST", "https://www.googleapis.com/urlshortener/v1/url", false);
 	xmlhttp.onload = function()
 	{
-		if(200 == xmlhttp.status){
-			var data = JSON.parse(xmlhttp.responseText);
+		var data = JSON.parse(xmlhttp.responseText);
+		if(200 == xmlhttp.status)
 			response = {status: "success", message: data.id};
-		}
 		else	
-			response = {status: "error", message: data.error_message};
+			response = {status: "error", message: data.error.message};
 	}
 	xmlhttp.setRequestHeader("Content-Type","application/json"); 
 	xmlhttp.send('{"longUrl": "' + url + '"}');
