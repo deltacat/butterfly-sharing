@@ -19,8 +19,6 @@ body, textarea
 .div-loading
 {
 	width: 160px;
-	margin-left: auto;
-    margin-right: auto;
 }
 
 .div-response

@@ -17,10 +17,34 @@ function shortenUrl(url)
 			return shortenUrlByAacx(url);
 			break;
 		case "goo.gl":
-		case undefined:
 			return shortenUrlByGoogl(url);
 			break;
+		case "t.cn":
+		case undefined:
+			return shortenUrlBySina(url);
+			break;
 	}
+}
+
+function shortenUrlBySina(url){
+	var apiKey = APPKEY_SINA;
+	var apiAddress = "http://api.t.sina.com.cn/short_url/shorten.json";
+	
+	var response;
+	var	xmlhttp = new XMLHttpRequest();
+	xmlhttp.open("GET", apiAddress + "?source=" + apiKey + "&url_long=" + encodeURIComponent(url), false);
+	xmlhttp.onload = function()
+	{
+		if(200 == xmlhttp.status){
+			var data = JSON.parse(xmlhttp.responseText);
+			response = {status: "success", message: data[0].url_short};
+		}
+		else	
+			response = {status: "error", message: xmlhttp.statusText};
+	}
+	xmlhttp.send(null);
+ 
+	return response;	
 }
 
 function shortenUrlByGoogl(url)

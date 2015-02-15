@@ -4,7 +4,7 @@
 function getSelectedText(name)
 {
 	var combox = $(name)[0];
-	for(i=0;i<combox.length;i++)
+	for(var i=0;i<combox.length;i++)
 	{
 		if(combox[i].selected==true)
 		{
@@ -17,7 +17,7 @@ function getSelectedText(name)
 function setSelectedText(name, text)
 {
 	var combox = $(name)[0];
-	for(i=0; i<combox.length; i++)
+	for(var i=0; i<combox.length; i++)
 	{
 		if(combox[i].innerText == text)
 		{
@@ -49,6 +49,7 @@ function saveAll()
 	g_preferences.parameters = 
 		{
 			auto_copy : $("#chkAutoCopy").is(":checked"),
+			show_qrcode : $("#chkShowQrCode").is(":checked"),
 			show_icon : $("#chkShowIcon").is(":checked"),
 			include_title : $("#chkIncludeTitle").is(":checked"),
 			shorten_service : getSelectedText('#shortenService')
@@ -124,6 +125,7 @@ function loadPage()
 
 	// basic options
 	$("#chkIncludeTitle").prop("checked", preferences.include_title);
+	$("#chkShowQrCode").prop("checked", preferences.show_qrcode);
 	$("#chkShowIcon").prop("checked", preferences.show_icon);
 	$("#chkAutoCopy").prop("checked", preferences.auto_copy);
 	setSelectedText("#shortenService", preferences.shorten_service);

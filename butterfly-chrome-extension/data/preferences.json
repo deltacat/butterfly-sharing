@@ -5,7 +5,7 @@
 		"show_qrcode" : true,
 		"show_icon" : true,
 		"include_title": true,
-		"shorten_service" : "is.gd"
+		"shorten_service" : "t.cn"
 	},
 	
 	"services" : 

@@ -31,7 +31,7 @@ function addServices()
 			}
 		}
 		
- 
+		/*　disable copy functions for a while
  		// create copy button
 		if(!g_preferences.parameters.auto_copy)
 		{
@@ -47,6 +47,7 @@ function addServices()
 			$divShare.append(temp);
 			hasButton = true;
 		}
+		*/
 		
 		if(hasButton)
 		{
@@ -174,39 +175,36 @@ function initData(tab)
 		id : tab.id,
 		url : tab.url,
 		title : tab.title,
-		shortenedUrl : "",
+		shortUrl : "",
 		txtContent : ""
 	}
 }
- 
-function init()
-{
-	$(document).ready(function ()
-		{
-			$('#divResponse').hide();
-		});
+
+function sendShortenRequestToBackground(){
 	
-	chrome.tabs.getSelected(null, function(tab) 
-	{
+	chrome.tabs.getSelected(null, function(tab) {
 		initData(tab);
 		chrome.extension.sendMessage({type: REQUEST_SHORTEN, url: g_data.url}, function(response)
 		{				
 			if(response.status == "error")
 			{
-				$('#divLoading').html(response.message);
-				$('#divResponse').hide();
-				$('#divLoading').show();
+				$('#divLoading').text(response.message);
 			}
 			else
 			{
-				g_data.shortenedUrl = response.message;
+				g_data.shortUrl = response.message;
 				if(g_preferences.parameters.include_title)
-					g_data.txtContent = g_data.title + ": " + g_data.shortenedUrl;
+					g_data.txtContent = g_data.title + ": " + g_data.shortUrl;
 				else
-					g_data.txtContent = g_data.shortenedUrl;
+					g_data.txtContent = g_data.shortUrl;
 				
 				$('#txtContent').append(g_data.txtContent);
-				$('#qrcode').qrcode({width: 128, height: 128, text: g_data.shortenedUrl});
+				
+				// show qrcode
+				if(g_preferences.parameters.show_qrcode)
+					$('#qrcode').qrcode({width: 128, height: 128, text: g_data.shortUrl});
+				else
+					$('#qrcode').hide();
 				
 				// Adding share buttons
 				var hasButton = addServices();
@@ -227,10 +225,19 @@ function init()
 				}
 				
 				$('#divResponse').show();
-				$('#divLoading').remove();
+				$('#divLoading').hide();
 			}
 		});
 	});
+	
 }
-
-$(document).ready(function () {init();});
+ 
+$(function () {
+	$('#divResponse').hide();
+	$('#divLoading').show();
+	
+	setTimeout(function(){
+		sendShortenRequestToBackground();
+	}, 0);
+	
+});
