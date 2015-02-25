@@ -87,32 +87,16 @@ function loadDefault()
 function loadChangelog()
 {
 	var xhr = new XMLHttpRequest();
-	xhr.open("GET", chrome.extension.getURL('/data/changelog.json'), false);
+	xhr.open("GET", chrome.extension.getURL('/changelog.md'), false);
 	xhr.onload = function()
 	{
 		if(xhr.responseText != null)
 		{
-			var response = JSON.parse(xhr.responseText);
-			var changelog;
-			
-			if(!isNullOrUndefined(response))
-			{
-				changelog = response.changelog_cn;
-			}
+			var changelog = markdown.toHTML(xhr.responseText);
 			if(!isNullOrUndefined(changelog))
 			{
 				var $changlogArea = $('#tabs-changelog');
-				for(i=changelog.length-1; i>=0; i--)
-				{
-					var revision = "<b>" + changelog[i].version + "</b>";
-					revision += "<ul>";
-					for(var j=0; j<changelog[i].changes.length; j++)
-					{
-						revision += "<li>" + changelog[i].changes[j] + "</li>"
-					}
-					revision += "</ul>"
-					$changlogArea.append(revision);
-				}
+				$changlogArea.append(changelog);
 			}
 		}
 	}

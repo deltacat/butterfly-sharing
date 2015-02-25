@@ -19,11 +19,39 @@ function shortenUrl(url)
 		case "goo.gl":
 			return shortenUrlByGoogl(url);
 			break;
+		case "dwz.cn":
+			return shortenUrlByBaidu(url);
+			break;
 		case "t.cn":
 		case undefined:
 			return shortenUrlBySina(url);
 			break;
 	}
+}
+
+function shortenUrlByBaidu(url){
+	var apiAddress = "http://dwz.cn/create.php";
+	
+	var response;
+	var	xmlhttp = new XMLHttpRequest();
+	xmlhttp.open("POST", apiAddress, false);
+	xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded"); 
+	xmlhttp.onload = function()
+	{
+		if(200 == xmlhttp.status){
+			var data = JSON.parse(xmlhttp.responseText);
+			if(0 == data.status)
+				response = {status: "success", message: data.tinyurl};
+			else
+				response = {status: "error", message: data.err_msg};
+		}
+		else	
+			response = {status: "error", message: xmlhttp.statusText};
+	}
+	var source = "url="+encodeURIComponent(url);
+	xmlhttp.send(source);
+ 
+	return response;	
 }
 
 function shortenUrlBySina(url){
