@@ -19,23 +19,19 @@ function addServices()
 			{
 				$divShare.append(createServiceIcon(service));
 				hasButton = true;
-				console.log("adding " + service);
 				
 				// binding event for each service icon
 				var btnid = "#btn" + service;
-				console.log("binding " + btnid);
 				$(btnid).click({service: service}, function(e){
-					console.log(e.data);
 					openShareWindow(e.data.service);
 				});
 			}
 		}
 		
-		/*　disable copy functions for a while
  		// create copy button
 		if(!g_preferences.parameters.auto_copy)
 		{
-			var temp = '<a href="#" class="ui-button button-share button-share-plain"';
+			var temp = '<a href="#" id="btnCopy" class="ui-button button-share button-share-plain"';
 			
 			if(g_preferences.parameters.show_icon)
 				temp += ' title="拷贝到剪贴板"><img class="icon-share" src="icons/copy.png">';
@@ -46,8 +42,13 @@ function addServices()
 			
 			$divShare.append(temp);
 			hasButton = true;
+			
+			// binding event for each service icon
+			var btnid = "#btnCopy";
+			$(btnid).click(function(e){
+				 copyToClipboard();			
+			});
 		}
-		*/
 		
 		if(hasButton)
 		{
@@ -167,6 +168,12 @@ function createServiceIcon(service)
 	
 	return iconHtml;
 }
+
+function copyToClipboard()
+{
+	var background_page = chrome.extension.getBackgroundPage();
+	background_page.copyToClipboard(g_data.txtContent);
+}
  
 function initData(tab)
 {
@@ -205,6 +212,11 @@ function sendShortenRequestToBackground(){
 					$('#qrcode').qrcode({width: 128, height: 128, text: g_data.shortUrl});
 				else
 					$('#qrcode').hide();
+
+				// auto copy
+				if(g_preferences.parameters.auto_copy) {
+					copyToClipboard();
+				}
 				
 				// Adding share buttons
 				var hasButton = addServices();

@@ -1,5 +1,10 @@
 ﻿## Changelog for Butterfly Sharing
 
+### v0.4.5 - 2015-2-27
+
+- 远程加载 changelog, license
+- 恢复剪贴板操作
+
 ### v0.4.3 - 2015-2-25
 
 - 支持百度短网址

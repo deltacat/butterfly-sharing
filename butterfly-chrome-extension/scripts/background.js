@@ -1,5 +1,23 @@
 ﻿var g_preferences = new Preferences();
 
+function copyToClipboard(content)
+{
+	var input = document.getElementById('content');
+	if(null == input)
+	{
+		input = document.createElement('input');
+		input.setAttribute("type", "text");
+		input.setAttribute("id", "content");
+		document.body.appendChild(input);
+	}
+
+	input.value = content;
+	input.focus();
+	input.select();
+	
+	document.execCommand('copy', false);
+}
+ 
 function shortenUrl(url)
 {
 	var preferences = g_preferences.parameters;
@@ -139,8 +157,7 @@ chrome.extension.onMessage.addListener(function(request, sender, func)
 		break;
 		
 		case REQUEST_COPY:
-			// disable clipboard functions.
-			// copyToClipboard(request.content);
+			copyToClipboard(request.content);
 		break;
 		
 		case REQUEST_PREFERENCE_RELOAD:
