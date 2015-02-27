@@ -84,19 +84,19 @@ function loadDefault()
 	loadPage();
 }
 
-function loadChangelog()
+function loadMarkdown(content_url, placeid)
 {
 	var xhr = new XMLHttpRequest();
-	xhr.open("GET", chrome.extension.getURL('/changelog.md'), false);
+	xhr.open("GET", content_url, true);
 	xhr.onload = function()
 	{
 		if(xhr.responseText != null)
 		{
-			var changelog = markdown.toHTML(xhr.responseText);
-			if(!isNullOrUndefined(changelog))
+			var content = markdown.toHTML(xhr.responseText);
+			if(!isNullOrUndefined(content))
 			{
-				var $changlogArea = $('#tabs-changelog');
-				$changlogArea.append(changelog);
+				var $place = $(placeid);
+				$place.append(content);
 			}
 		}
 	}
@@ -136,8 +136,9 @@ function loadPage()
 	$("#twtUser").attr("value", twitter.username);
 	$("#twtPass").attr("value", twitter.password);
 	
-	// load changelog
-	loadChangelog();
+	// load changelog, license, etc.
+	loadMarkdown(URL_CHANGELOG, "#tabs-changelog");
+	loadMarkdown(URL_LICENSE, "#tabs-license");
 
 }
 
