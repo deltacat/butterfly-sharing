@@ -37,6 +37,7 @@ body, textarea
 
 .div-qrcode
 {
+	float: left;
 	width: 128px;
 	margin-left: auto;
     margin-right: auto;
@@ -46,6 +47,10 @@ body, textarea
 
 .div-share
 {
+	width: 120px;
+	height: 100px;
+	word-wrap:break-word; 
+	word-break:break-all;
 	margin: 2px 0px 2px 0px;
 	vertical-align: middle;
 }
