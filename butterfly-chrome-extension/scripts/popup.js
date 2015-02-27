@@ -1,5 +1,4 @@
-﻿var g_background = chrome.extension.getBackgroundPage();
-var g_preferences = new Preferences;
+﻿var g_preferences = new Preferences;
 var g_data;
 
 function addServices()
@@ -172,7 +171,7 @@ function createServiceIcon(service)
 
 function copyToClipboard()
 {
-	g_background.copyToClipboard(g_data.txtContent);
+	getBackground().copyToClipboard(g_data.txtContent);
 }
  
 function initData(tab)
@@ -185,6 +184,10 @@ function initData(tab)
 		shortUrl : "",
 		txtContent : ""
 	}
+}
+
+function getBackground(){
+	return chrome.extension.getBackgroundPage();
 }
 
 function updateDataView(){
@@ -238,7 +241,7 @@ $(function () {
 		
 		initData(tab);
 		
-		g_background.tryShortenUrl(g_data.url, function(response) {
+		getBackground().tryShortenUrl(g_data.url, function(response) {
 			
 			if(response.status == "error")
 			{

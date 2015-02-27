@@ -1,6 +1,6 @@
 ﻿## Changelog for Butterfly Sharing
 
-### v0.4.6 - 2015-2-27
+### v0.4.8 - 2015-2-27
 
 - 远程加载 changelog, license
 - 恢复剪贴板操作
