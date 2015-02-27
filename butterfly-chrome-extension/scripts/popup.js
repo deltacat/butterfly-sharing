@@ -1,4 +1,5 @@
-﻿var g_preferences = new Preferences;
+﻿var g_background = chrome.extension.getBackgroundPage();
+var g_preferences = new Preferences;
 var g_data;
 
 function addServices()
@@ -171,8 +172,7 @@ function createServiceIcon(service)
 
 function copyToClipboard()
 {
-	var background_page = chrome.extension.getBackgroundPage();
-	background_page.copyToClipboard(g_data.txtContent);
+	g_background.copyToClipboard(g_data.txtContent);
 }
  
 function initData(tab)
@@ -187,12 +187,59 @@ function initData(tab)
 	}
 }
 
-function sendShortenRequestToBackground(){
+function updateDataView(){
+	
+	if(g_preferences.parameters.include_title)
+		g_data.txtContent = g_data.title + ": " + g_data.shortUrl;
+	else
+		g_data.txtContent = g_data.shortUrl;
+	
+	$('#txtContent').append(g_data.txtContent);
+	
+	// show qrcode
+	if(g_preferences.parameters.show_qrcode)
+		$('#qrcode').qrcode({width: 128, height: 128, text: g_data.shortUrl});
+	else
+		$('#qrcode').hide();
+
+	// auto copy
+	if(g_preferences.parameters.auto_copy) {
+		copyToClipboard();
+	}
+	
+	// Adding share buttons
+	var hasButton = addServices();
+	if(hasButton)
+	{
+		$(".button-share").hover(
+			function() { $(this).removeClass("button-share-plain").addClass("ui-state-hover"); },
+			function() { $(this).removeClass("ui-state-hover").addClass("button-share-plain"); }
+			);
+	}
+	var hasAdvButton = addServicesAdv();
+	if(hasButton)
+	{
+		$(".button-share-advance").hover(
+			function() { $(this).addClass("ui-state-hover"); },
+			function() { $(this).removeClass("ui-state-hover");	}
+			);
+	}
+	
+	$('#divResponse').show();
+	$('#divLoading').hide();
+
+}
+
+$(function () {
+	$('#divResponse').hide();
+	$('#divLoading').show();
 	
 	chrome.tabs.getSelected(null, function(tab) {
+		
 		initData(tab);
-		chrome.extension.sendMessage({type: REQUEST_SHORTEN, url: g_data.url}, function(response)
-		{				
+		
+		g_background.tryShortenUrl(g_data.url, function(response) {
+			
 			if(response.status == "error")
 			{
 				$('#divLoading').text(response.message);
@@ -200,56 +247,8 @@ function sendShortenRequestToBackground(){
 			else
 			{
 				g_data.shortUrl = response.message;
-				if(g_preferences.parameters.include_title)
-					g_data.txtContent = g_data.title + ": " + g_data.shortUrl;
-				else
-					g_data.txtContent = g_data.shortUrl;
-				
-				$('#txtContent').append(g_data.txtContent);
-				
-				// show qrcode
-				if(g_preferences.parameters.show_qrcode)
-					$('#qrcode').qrcode({width: 128, height: 128, text: g_data.shortUrl});
-				else
-					$('#qrcode').hide();
-
-				// auto copy
-				if(g_preferences.parameters.auto_copy) {
-					copyToClipboard();
-				}
-				
-				// Adding share buttons
-				var hasButton = addServices();
-				if(hasButton)
-				{
-					$(".button-share").hover(
-						function() { $(this).removeClass("button-share-plain").addClass("ui-state-hover"); },
-						function() { $(this).removeClass("ui-state-hover").addClass("button-share-plain"); }
-						);
-				}
-				var hasAdvButton = addServicesAdv();
-				if(hasButton)
-				{
-					$(".button-share-advance").hover(
-						function() { $(this).addClass("ui-state-hover"); },
-						function() { $(this).removeClass("ui-state-hover");	}
-						);
-				}
-				
-				$('#divResponse').show();
-				$('#divLoading').hide();
+				updateDataView();
 			}
 		});
 	});
-	
-}
- 
-$(function () {
-	$('#divResponse').hide();
-	$('#divLoading').show();
-	
-	setTimeout(function(){
-		sendShortenRequestToBackground();
-	}, 0);
-	
 });

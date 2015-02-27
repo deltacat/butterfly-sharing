@@ -1,9 +1,10 @@
 ﻿## Changelog for Butterfly Sharing
 
-### v0.4.5 - 2015-2-27
+### v0.4.6 - 2015-2-27
 
 - 远程加载 changelog, license
 - 恢复剪贴板操作
+- 性能优化：远程 API 调用改为异步
 
 ### v0.4.3 - 2015-2-25
 
