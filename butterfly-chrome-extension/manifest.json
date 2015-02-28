@@ -4,13 +4,7 @@
   "version": "0.4.8",
   "description": "__MSG_description__",
   "background": {
-    "scripts": [
-    	"scripts/background.js", 
-    	"scripts/preferences.js",
-    	"scripts/contextmenu.js", 
-    	"scripts/shortener.js", 
-    	"scripts/consts.js"
-    	],
+    "scripts": ["scripts/background.js"],
     "persistent": false
   },
   "browser_action": {
@@ -25,8 +19,7 @@
 	},
   "options_page": "options.html",
   "permissions": [
-	"activeTab",
-	"contextMenus",
+	"tabs",
 	"http://*/",
   	"https://*/"
   ],
