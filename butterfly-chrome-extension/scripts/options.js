@@ -106,7 +106,8 @@ function loadPage()
 {
 	var preferences = g_preferences.parameters;
 	
-	$("#version").text(getVersion());
+	var manifest = chrome.runtime.getManifest();
+	$("#version").text(manifest.version);
 
 	// basic options
 	$("#chkIncludeTitle").prop("checked", preferences.include_title);

@@ -16,11 +16,3 @@ function isNullOrUndefined(obj)
 {
 	return (null == obj) || (undefined == obj);
 }
-
-function getVersion(){
-	var manifest = chrome.runtime.getManifest();
-	if(null == manifest)
-		return "0.0.0";
-	else
-		return manifest.version;
-}

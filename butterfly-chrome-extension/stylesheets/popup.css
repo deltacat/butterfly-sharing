@@ -9,14 +9,11 @@ body, textarea
 
 .txtContent
 {
-	font-size: 16px; 
-	color: #0060C0;
 	resize:none;
 	overflow-y:visible;	
 	padding: 1px 3px;
 	width: 100%;
 	margin: 0px;
-	border: 1px solid #DDD;
 }
 
 .div-loading
@@ -34,7 +31,6 @@ body, textarea
 .div-text
 {
 	width: 260px;
-	margin-top: 5px;
 	margin-left: auto;
     margin-right: auto;
 }
@@ -52,6 +48,7 @@ body, textarea
 .div-share
 {
 	width: 120px;
+	height: 100px;
 	word-wrap:break-word; 
 	word-break:break-all;
 	margin: 2px 0px 2px 0px;
@@ -67,8 +64,8 @@ body, textarea
 
 .button-share
 {
-	font-size: 14px;
-	padding: 1px;
+	font-size: 16px;
+	padding: 2px;
 	margin: 0px;
 }
 
