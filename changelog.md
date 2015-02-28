@@ -1,5 +1,12 @@
 ﻿## Changelog for Butterfly Sharing
 
+### v0.5.0 - 2015-2-28
+
+- 清理 background 脚本，减少后台资源消耗
+- 显示当前版本号
+- 优化代码
+- 调整布局
+
 ### v0.4.8 - 2015-2-27
 
 - 远程加载 changelog, license
