@@ -34,9 +34,9 @@ function addServices()
 			var temp = '<a href="#" id="btnCopy" class="ui-button button-share button-share-plain"';
 			
 			if(g_preferences.parameters.show_icon)
-				temp += ' title="拷贝到剪贴板"><img class="icon-share" src="icons/copy.png">';
+				temp += ' title="拷贝"><img class="icon-share" src="icons/copy.png">';
 			else
-				temp += '>拷贝到剪贴板';
+				temp += '>拷贝';
 			
 			temp += '</a>';
 			
@@ -195,6 +195,7 @@ function updateDataView(){
 	else
 		g_data.txtContent = g_data.shortUrl;
 	
+	$("#version").text(getVersion());
 	$('#txtContent').append(g_data.txtContent);
 	
 	// show qrcode
