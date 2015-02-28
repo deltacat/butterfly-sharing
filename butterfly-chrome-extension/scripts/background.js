@@ -13,6 +13,7 @@
 	input.focus();
 	input.select();
 	
+	// This "copy" command can only run under background page, cannot run on "popup" page. Don't know reason. :(
 	document.execCommand('copy', false);
 }
  
