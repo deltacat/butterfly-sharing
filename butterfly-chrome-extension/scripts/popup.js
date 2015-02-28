@@ -171,7 +171,9 @@ function createServiceIcon(service)
 
 function copyToClipboard()
 {
-	getBackground().copyToClipboard(g_data.txtContent);
+	chrome.runtime.getBackgroundPage(function(backgroundPage){
+		backgroundPage.copyToClipboard(g_data.txtContent);
+	})
 }
  
 function initData(tab)
@@ -184,10 +186,6 @@ function initData(tab)
 		shortUrl : "",
 		txtContent : ""
 	}
-}
-
-function getBackground(){
-	return chrome.extension.getBackgroundPage();
 }
 
 function updateDataView(){
@@ -241,7 +239,15 @@ $(function () {
 		
 		initData(tab);
 		
-		getBackground().tryShortenUrl(g_data.url, function(response) {
+		var preferences = g_preferences.parameters;
+		if(preferences == undefined)
+			var shortenService = undefined;
+		else
+			var shortenService = preferences.shorten_service;
+		
+		var shorterner = new Shortener(shortenService);
+		
+		shorterner.shortenUrl(g_data.url, function(response) {
 			
 			if(response.status == "error")
 			{

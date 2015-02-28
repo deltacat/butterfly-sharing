@@ -70,8 +70,6 @@ function saveAll()
 		}
 
 	g_preferences.save();	
-	chrome.extension.sendMessage({type: REQUEST_PREFERENCE_RELOAD});
-	
 }
 
 function loadDefault()
@@ -106,6 +104,9 @@ function loadMarkdown(content_url, placeid)
 function loadPage()
 {
 	var preferences = g_preferences.parameters;
+	
+	var manifest = chrome.runtime.getManifest();
+	$("#version").text(manifest.version);
 
 	// basic options
 	$("#chkIncludeTitle").prop("checked", preferences.include_title);
