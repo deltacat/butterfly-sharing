@@ -1,6 +1,5 @@
 ﻿## Changelog for Butterfly Sharing
 
-<<<<<<< HEAD
 ### v0.5.0 - 2015-2-28
 
 - 清理 background 脚本，减少后台资源消耗
@@ -10,8 +9,6 @@
 - 调整布局
 - 增加右键菜单项
 
-=======
->>>>>>> parent of ed6ea58... 0.5.0: adapt layout
 ### v0.4.8 - 2015-2-27
 
 - 远程加载 changelog, license
