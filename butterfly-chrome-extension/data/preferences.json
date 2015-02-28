@@ -5,6 +5,7 @@
 		"show_qrcode" : true,
 		"show_icon" : true,
 		"include_title": true,
+		"show_menu": true,
 		"shorten_service" : "t.cn"
 	},
 	

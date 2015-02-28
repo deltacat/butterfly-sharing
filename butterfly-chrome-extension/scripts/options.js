@@ -51,6 +51,7 @@ function saveAll()
 			auto_copy : $("#chkAutoCopy").is(":checked"),
 			show_qrcode : $("#chkShowQrCode").is(":checked"),
 			show_icon : $("#chkShowIcon").is(":checked"),
+			show_menu : $("#chkShowMenu").is(":checked"),
 			include_title : $("#chkIncludeTitle").is(":checked"),
 			shorten_service : getSelectedText('#shortenService')
 		}
@@ -112,6 +113,7 @@ function loadPage()
 	$("#chkIncludeTitle").prop("checked", preferences.include_title);
 	$("#chkShowQrCode").prop("checked", preferences.show_qrcode);
 	$("#chkShowIcon").prop("checked", preferences.show_icon);
+	$("#chkShowMenu").prop("checked", preferences.show_menu);
 	$("#chkAutoCopy").prop("checked", preferences.auto_copy);
 	setSelectedText("#shortenService", preferences.shorten_service);
 	
